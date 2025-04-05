@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Songs - Song Lyrics Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: white;
+      color: #0b3d91;
+      font-family: 'Roboto Mono', monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-border {
+      border: 10px solid #0b3d91;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      background-color: #0b3d91;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      background-color: #0b3d91;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+
+    th, td {
+      border: 1px solid #0b3d91;
+      padding: 12px;
+      font-size: 1.1rem;
+    }
+
+    th {
+      background-color: #0b3d91;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e0eaff;
+    }
+
+    a.song-link {
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.song-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="site-border">
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a th:href="@{/}">Song Lyrics Hub</a></div>
+    <div class="links">
+      <a th:href="@{/lyrics/home}">Home</a>
+      <a th:href="@{/lyrics/history}">History</a>
+      <a th:href="@{/lyrics/upload}">Upload</a>
+      <a th:href="@{/lyrics/about}">About</a>
+    </div>
+  </nav>
+
+  <!-- ✅ Page Content -->
+  <div class="content">
+    <h1>All Songs Listed</h1>
+
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Song Number</th>
+        <th>Song Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="song : ${songs}">
+        <td th:text="${song.id}"></td>
+        <td>
+          <a th:href="@{/lyrics/songs/{id}(id=${song.songNumber})}" th:text="${song.songNumber}" class="song-link"></a>
+        </td>
+        <td>
+          <a th:href="@{/lyrics/songs/{id}(id=${song.songNumber})}" th:text="${song.songName}" class="song-link"></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

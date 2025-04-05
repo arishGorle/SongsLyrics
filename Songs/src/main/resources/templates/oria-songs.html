@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="or" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Oria Songs | Fellowship</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3faff;
+      color: #0b3d91;
+      padding: 2rem;
+    }
+    .back-link {
+      margin-bottom: 2rem;
+      display: inline-block;
+      text-decoration: none;
+      color: #0b3d91;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 0.5rem 0;
+      background: #ffffff;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+    }
+    .song-number {
+      font-weight: bold;
+      margin-right: 1rem;
+      color: #1e40af;
+      font-size: 1rem;
+      min-width: 2rem;
+    }
+    .song-name {
+      font-size: 1rem;
+      flex-grow: 1;
+    }
+    .song-link {
+      color: inherit;
+      text-decoration: none;
+    }
+    .song-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<a th:href="explore" class="back-link">← Back to Explore</a>
+
+<h1>🎵 Oria Songs</h1>
+<ul>
+  <li th:each="song : ${songs}">
+    <span class="song-number" th:text="${song.songNumber}">1.</span>
+    <span class="song-name">
+      <a th:href="@{'/lyrics/songs/' + ${song.songNumber}}" th:text="${song.songName}" class="song-link">Song Name</a>
+    </span>
+  </li>
+</ul>
+
+</body>
+</html>

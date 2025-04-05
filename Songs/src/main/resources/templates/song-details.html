@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="'Lyrics - ' + ${song.songName}">Lyrics</title>
+  <style>
+    body {
+      background-color: white;
+      color: #0b3d91;
+      font-family: 'Roboto Mono', monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-border {
+      border: 10px solid #0b3d91;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      background-color: #0b3d91;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      background-color: #0b3d91;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .lyrics {
+      white-space: pre-wrap;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    a.back-link {
+      color: #0b3d91;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 2rem;
+      display: inline-block;
+    }
+
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="site-border">
+
+  <nav class="navbar">
+    <div class="logo"><a href="/">Fellowship</a></div>
+  </nav>
+
+  <div class="content">
+    <h1 th:text="${song.songName}">Song Name</h1>
+    <p><strong>Song Number:</strong> <span th:text="${song.songNumber}"></span></p>
+    <div class="lyrics" th:text="${song.english}"></div>
+    <div class="lyrics" th:text="${song.hindi}"></div>
+    <div class="lyrics" th:text="${song.oria}"></div>
+    <div class="lyrics" th:text="${song.telugu}"></div>
+
+    <a th:href="explore" class="back-link">← Back to All Songs</a>
+  </div>
+</div>
+</body>
+</html>
